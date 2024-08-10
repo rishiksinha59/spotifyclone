@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const SongItem = ({ song, selectSong, isSelected }) => {
+const SongItem = ({ song, selectSong, isSelected , }) => {
   const [duration, setDuration] = useState("00:00");
   useEffect(() => {
     const audio = new Audio(song.url);
@@ -15,7 +15,7 @@ const SongItem = ({ song, selectSong, isSelected }) => {
   return (
     <div
       onClick={() => selectSong(song)}
-      className={`flex justify-between items-center p-2 rounded-md cursor-pointer 
+      className={`flex justify-between items-center p-2 rounded-md cursor-pointer
     ${isSelected ? "bg-blue-500" : "hover:bg-gray-700"} `}
     >
       <div className="flex items-center">
