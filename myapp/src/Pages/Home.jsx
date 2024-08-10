@@ -153,15 +153,10 @@ const Home = () => {
         </div>
       </div>
       <div className="sm:flex max-h-[1000px] h-[100%] overflow-clip max-w-[1450px] md:px-[32px] px-5 mx-auto gap-5 justify-around">
-        <div className="hidden md:block">
-          <div className="flex md:flex-col min-w-[60px] max-h-[1000px]  flex-shrink-0 justify-between  md:h-full py-3 md:py-[32px]  px-5 md:px-0">
-            <img src={Logo} alt="Spotify logo" className="w-24 lg:w-24 md:mb-4 flex-shrink-0" />
-            <div className="flex gap-3 max-w-[140px] justify-between w-full items-center">
-              <img src={user ? user.photoURL : defaultUser} alt="User" className="w-10 lg:w-12  flex-shrink-0 rounded-full  bg-[black] hover: -[2px] hover:cursor-pointer  -[#cc4545]" onClick={handleGoogle} />
-              <IoMenu size={40} className="bg-gray-800 p-[2px] rounded sm:hidden" />
-            </div>
-          </div>{" "}
-        </div>
+      <div className="hidden md:block">
+
+      <Header/>
+      </div>
         <div className="hidden sm:block h-[100%] w-full overflow-y-scroll">
           <PlayLists selectSong={setSelectedSong} selectedSong={selectedSong} setSongs={setSongs} songs={songs} />
         </div>
