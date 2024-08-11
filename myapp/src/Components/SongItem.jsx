@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 
-const SongItem = ({ song, selectSong, isSelected , }) => {
+const SongItem = ({ song, selectSong, isSelected, backgroundColor }) => {
   const [duration, setDuration] = useState("00:00");
+
   useEffect(() => {
     const audio = new Audio(song.url);
     audio.addEventListener("loadedmetadata", () => {
@@ -12,11 +13,15 @@ const SongItem = ({ song, selectSong, isSelected , }) => {
       setDuration(`${minutes}:${seconds}`);
     });
   }, [song.url]);
+
   return (
     <div
       onClick={() => selectSong(song)}
       className={`flex justify-between items-center p-2 rounded-md cursor-pointer
-    ${isSelected ? "bg-blue-500" : "hover:bg-gray-700"} `}
+      ${isSelected ? `bg-opacity-80` : "hover:bg-gray-700"}`} // Increase opacity for selected song
+      style={{
+        backgroundColor: isSelected ? backgroundColor : undefined,
+      }}
     >
       <div className="flex items-center">
         <img

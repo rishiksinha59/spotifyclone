@@ -1,11 +1,11 @@
 import React from 'react';
 import { FiSearch } from 'react-icons/fi';
 
-const SearchBar = ({ searchTerm, setSearchTerm }) => {
+const SearchBar = ({ searchTerm, setSearchTerm, backgroundColor }) => {
   return (
-    <div className="flex items-center mb-4 sticky top-1">
+    <div className="flex items-center mb-4 shadow-2xl sm:border-0 border sticky top-1 rounded-xl " style={{backgroundColor: backgroundColor}}>
 
-      <div className="flex items-center bg-gray-800 p-3 rounded-md w-full">
+      <div className="flex items-center  p-3 rounded-md w-full">
         <input
           type="text"
           value={searchTerm}

@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import Logo from "../Assets/Logo.svg";
 import defaultUser from "../Assets/user.png";
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { auth } from "../firebase/firebaseConfig";
-import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { IoMenu } from "react-icons/io5";
 

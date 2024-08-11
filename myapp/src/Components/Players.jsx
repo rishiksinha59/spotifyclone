@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
-import { FiPlay, FiPause, FiSkipBack, FiSkipForward, FiVolume2, FiRepeat } from "react-icons/fi";
+import { FiRepeat } from "react-icons/fi";
 import { FaCirclePlay } from "react-icons/fa6";
 import { TbPlayerTrackNextFilled, TbPlayerTrackPrevFilled } from "react-icons/tb";
 import { HiSpeakerWave } from "react-icons/hi2";
@@ -144,9 +144,9 @@ const Player = ({ selectedSong, songs, setSelectedSong }) => {
 
   return (
     selectedSong && (
-      <div className="flex flex-col sm:max-w-[480px] w-full">
+      <div className="flex flex-col sm:max-w-[480px] w-full ">
         <div className="">
-          <h3 className="text-white text-base lg:text-[32px] font-[700] leading-[36px]">{selectedSong.name}</h3>
+          <h3 className="text-white text-base text-[26px] sm:text-[30px] lg:text-[32px] font-[700] leading-[36px]">{selectedSong.name}</h3>
           <p className="text-gray-400 mb-4 text-sm lg:text-base leading-[24px]">{selectedSong.artist}</p>
         </div>
         <div className="max-w-[480px] mx-auto  aspect-square w-[100%]">
@@ -161,15 +161,15 @@ const Player = ({ selectedSong, songs, setSelectedSong }) => {
           <div className="relative group">
             <GoKebabHorizontal size={48} className="bg-gray-800 p-2 rounded-full cursor-pointer" />
 
-            <div className="absolute bottom-5 -translate-y-2 right-0 text-center bg-gray-800 text-white p-2.5 rounded-t-full opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-              <div className="gap-2 pb-5 flex flex-col items-center">
+            <div className="absolute  bottom-5 -translate-y-2 right-0 text-center bg-gray-800 text-white p-[9px] rounded-t-full opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+              <div className="gap-2 pb-5 flex flex-col items-center ">
                 {/* Timer Section */}
                 <div className="relative">
                   <MdTimer size={30} className={`text-2xl cursor-pointer ${timerActivated ? "text-green-500" : ""}`} />
                   <div className="absolute w-[100px] -right-10 text-center top-full -mt-[205px] bg-gray-800 text-white p-2 rounded opacity-0 hover:opacity-100 transition-opacity duration-200">
-                    {[0.5, 10, 15, 30, 60].map((duration) => (
+                    {[5, 10, 15, 30, 60].map((duration) => (
                       <div key={duration} onClick={() => setTimer(duration)} className={`cursor-pointer p-1 ${timerDuration === duration ? "text-green-500" : " "}`}>
-                        {duration === 0.5 ? "0.5 m" : `${duration} m`}
+                        {duration === 5 ? "5 m" : `${duration} m`}
                       </div>
                     ))}
                     <div onClick={() => setTimer(0)} className={`cursor-pointer p-1 ${timerDuration === 0 ? "text-green-500" : ""}`}>
@@ -205,21 +205,3 @@ const Player = ({ selectedSong, songs, setSelectedSong }) => {
 };
 
 export default Player;
-
-{
-  /* <div className="relative  ">
-                  <MdTimer size={30} onClick={handleTimerClick} className={`text-2xl cursor-pointer ${timerActivated ? "text-green-500" : ""}`} />
-                  {showTimerOptions && (
-                    <div className="absolute w-[100px] -right-10 text-center top-full -mt-[232px] bg-gray-800 text-white p-2 rounded">
-                      {[0.5, 10, 15, 30, 60].map((duration) => (
-                        <div key={duration} onClick={() => setTimer(duration)} className={`cursor-pointer p-1 ${timerDuration === duration ? "text-green-500" : ""}`}>
-                          {duration === 0.5 ? "0.5 m" : `${duration} m`}
-                        </div>
-                      ))}
-                      <div onClick={() => setTimer(0)} className={`cursor-pointer p-1 ${timerDuration === 0 ? "text-green-500" : ""}`}>
-                        Off
-                      </div>
-                    </div>
-                  )}
-                </div> */
-}
