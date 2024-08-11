@@ -42,7 +42,7 @@ const Home = () => {
     }
   };
 
-  const backgroundColor = selectedSong ? selectedSong.accent : "#1a202c"; // Default color
+  const backgroundColor = selectedSong ? selectedSong.accent : "#1a202c"; 
 
   return (
     <div
@@ -67,16 +67,16 @@ const Home = () => {
           <PlayLists selectSong={setSelectedSong} selectedSong={selectedSong} setSongs={setSongs} songs={songs} backgroundColor={backgroundColor} />
         </div>
         {selectedSong ? (
-          <div className="flex flex-col justify-center w-full">
+          <div className="flex flex-col justify-center w-full ">
             <Player selectedSong={selectedSong} songs={songs} setSelectedSong={setSelectedSong} />
           </div>
         ) : (
-          <div className="flex flex-col h-[70svh] sm:h-auto justify-center text-[30px] sm:text-[35px] lg:text-[45px] font-semibold items-center text-center tracking-wider opacity-50">
-            <span className="ml-4">
+          <div className="flex flex-col md:max-w-[400px] w-full h-[70svh] sm:h-auto justify-center text-[30px] sm:text-[35px] lg:text-[45px] font-semibold items-center text-center tracking-wider opacity-50">
+            <div className=" w-full">
               Please Select
               <br />a Song
-            </span>
             <FaMusic className="mx-auto text-[40px] sm:text-[50px] md:text-[60px] m-5" />
+            </div>
           </div>
         )}
       </div>

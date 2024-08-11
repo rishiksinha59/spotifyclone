@@ -1,9 +1,8 @@
 import React, { useRef, useState, useEffect } from "react";
 import { FiRepeat } from "react-icons/fi";
-import { FaCirclePlay } from "react-icons/fa6";
+import { FaCirclePlay, FaCirclePause } from "react-icons/fa6";
 import { TbPlayerTrackNextFilled, TbPlayerTrackPrevFilled } from "react-icons/tb";
 import { HiSpeakerWave } from "react-icons/hi2";
-import { FaCirclePause } from "react-icons/fa6";
 import { MdTimer } from "react-icons/md";
 import { GoKebabHorizontal } from "react-icons/go";
 
@@ -14,6 +13,9 @@ const Player = ({ selectedSong, songs, setSelectedSong }) => {
   const [showTimerOptions, setShowTimerOptions] = useState(false);
   const [timerDuration, setTimerDuration] = useState(0);
   const [timerActivated, setTimerActivated] = useState(false);
+  const [kebabMenuHovered, setKebabMenuHovered] = useState(false);
+  const [timerIconHovered, setTimerIconHovered] = useState(false);
+  
   const audioRef = useRef(null);
   const intervalRef = useRef(null);
   const timerRef = useRef(null);
@@ -126,6 +128,11 @@ const Player = ({ selectedSong, songs, setSelectedSong }) => {
     setProgress((newTime / audioRef.current.duration) * 100);
   };
 
+  const handleKebabMenuMouseEnter = () => setKebabMenuHovered(true);
+  const handleKebabMenuMouseLeave = () => setKebabMenuHovered(false);
+  const handleTimerIconMouseEnter = () => setTimerIconHovered(true);
+  const handleTimerIconMouseLeave = () => setTimerIconHovered(false);
+
   const handleTimerClick = () => {
     setShowTimerOptions(!showTimerOptions);
   };
@@ -146,11 +153,11 @@ const Player = ({ selectedSong, songs, setSelectedSong }) => {
     selectedSong && (
       <div className="flex flex-col sm:max-w-[480px] w-full ">
         <div className="">
-          <h3 className="text-white  text-[24px] sm:text-[30px] lg:text-[32px] font-[700] leading-[36px]">{selectedSong.name}</h3>
+          <h3 className="text-white text-[24px] sm:text-[30px] lg:text-[32px] font-[700] leading-[36px]">{selectedSong.name}</h3>
           <p className="text-gray-400 mb-4 text-sm lg:text-[16px] leading-[24px]">{selectedSong.artist}</p>
         </div>
-        <div className="max-w-[480px] mx-auto  aspect-square w-[100%] ">
-          <img src={`https://cms.samespace.com/assets/${selectedSong.cover}`} alt={selectedSong.name} className="mb-4 max-w-[480px] w-[100%] aspect-square  rounded-[8px]" />
+        <div className="max-w-[480px] mx-auto aspect-square w-[100%]">
+          <img src={`https://cms.samespace.com/assets/${selectedSong.cover}`} alt={selectedSong.name} className="mb-4 max-w-[480px] w-[100%] aspect-square rounded-[8px]" />
         </div>
 
         <div className="w-full h-[6px] bg-gray-600 rounded-full cursor-pointer mb-[32px] max-w-[480px] mx-auto mt-[24px]" onClick={handleProgressClick}>
@@ -158,33 +165,45 @@ const Player = ({ selectedSong, songs, setSelectedSong }) => {
         </div>
         <div className="flex items-center justify-between space-x-4">
           {/* Hoverable Kebab Menu */}
-          <div className="relative group">
+          <div
+            className="relative group"
+            onMouseEnter={handleKebabMenuMouseEnter}
+            onMouseLeave={handleKebabMenuMouseLeave}
+          >
             <GoKebabHorizontal size={48} className="bg-gray-800 p-2 rounded-full cursor-pointer" />
 
-            <div className="absolute  bottom-5 -translate-y-2 right-0 text-center bg-gray-800 text-white p-[9px] rounded-t-full opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-              <div className="gap-2 pb-5 flex flex-col items-center ">
-                {/* Timer Section */}
-                <div className="relative">
-                  <MdTimer size={30} className={`text-2xl cursor-pointer ${timerActivated ? "text-green-500" : ""}`} />
-                  <div className="absolute w-[100px] -right-10 text-center top-full -mt-[205px] bg-gray-800 text-white p-2 rounded opacity-0 hover:opacity-100 transition-opacity duration-200">
-                    {[5, 10, 15, 30, 60].map((duration) => (
-                      <div key={duration} onClick={() => setTimer(duration)} className={`cursor-pointer p-1 ${timerDuration === duration ? "text-green-500" : " "}`}>
-                        {duration === 5 ? "5 m" : `${duration} m`}
+            {kebabMenuHovered && (
+              <div className="absolute bottom-5 -translate-y-2 right-0 text-center bg-gray-800 text-white p-[9px] rounded-t-full opacity-100 transition-opacity duration-200">
+                <div className="gap-2 pb-5 flex flex-col items-center">
+                  {/* Timer Section */}
+                  <div
+                    className="relative"
+                    onMouseEnter={handleTimerIconMouseEnter}
+                    onMouseLeave={handleTimerIconMouseLeave}
+                  >
+                    <MdTimer size={30} className={`text-2xl cursor-pointer ${timerActivated ? "text-green-500" : ""}`} onClick={handleTimerClick} />
+                    {timerIconHovered && showTimerOptions && (
+                      <div className="absolute border w-[100px] -right-10 text-center top-full -mt-[205px] bg-gray-800 text-white p-2 rounded opacity-100 transition-opacity duration-200">
+                        {[5, 10, 15, 30, 60].map((duration) => (
+                          <div key={duration} onClick={() => setTimer(duration)} className={`cursor-pointer p-1 ${timerDuration === duration ? "text-green-500" : ""}`}>
+                            {duration === 5 ? "5 m" : `${duration} m`}
+                          </div>
+                        ))}
+                        <div onClick={() => setTimer(0)} className={`cursor-pointer p-1 ${timerDuration === 0 ? "text-green-500" : ""}`}>
+                          Off
+                        </div>
                       </div>
-                    ))}
-                    <div onClick={() => setTimer(0)} className={`cursor-pointer p-1 ${timerDuration === 0 ? "text-green-500" : ""}`}>
-                      Off
-                    </div>
+                    )}
                   </div>
-                </div>
 
-                {/* Repeat Section */}
-                <FiRepeat size={30} onClick={() => setRepeat(!repeat)} className={`text-2xl cursor-pointer mt-5 ${repeat ? "text-green-500" : ""}`} />
+                  {/* Repeat Section */}
+                  <FiRepeat size={30} onClick={() => setRepeat(!repeat)} className={`text-2xl cursor-pointer mt-5 ${repeat ? "text-green-500" : ""}`} />
+                </div>
               </div>
-            </div>
+            )}
           </div>
 
-          <div className="flex items-center  justify-between space-x-4">
+          <div className="flex items-center justify-between space-x-4">
             <TbPlayerTrackPrevFilled onClick={playPreviousSong} className="text-white text-[32px] cursor-pointer opacity-75 hover:opacity-100" />
             {isPlaying ? <FaCirclePause onClick={() => setIsPlaying(false)} className="text-white text-[48px] cursor-pointer hover:scale-110 duration-200" /> : <FaCirclePlay onClick={() => setIsPlaying(true)} className="text-white text-[48px] cursor-pointer hover:scale-110 duration-200" />}
             <TbPlayerTrackNextFilled onClick={playNextSong} className="text-[#FFFFFF] text-[32px] opacity-75 hover:opacity-100 cursor-pointer" />
@@ -193,7 +212,7 @@ const Player = ({ selectedSong, songs, setSelectedSong }) => {
           <div className="relative group flex justify-center items-center bg-gray-800 w-[48px] h-[48px] rounded-full cursor-pointer">
             <HiSpeakerWave className="text-white text-[20px] group-hover:-rotate-90 duration-150" />
             <div className="absolute -top-[60px] hidden group-hover:flex items-center justify-center">
-              <div className="bg-gray-800 p-2 rounded -rotate-90 -mt-5">
+              <div className="bg-gray-800 p-2 rounded -rotate-90   lg:-mt-5 ">
                 <input type="range" min="0" max="100" className="bg-gray-800 w-24 lg:w-32" onChange={(e) => (audioRef.current.volume = e.target.value / 100)} />
               </div>
             </div>

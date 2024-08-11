@@ -17,7 +17,7 @@ const SongItem = ({ song, selectSong, isSelected, backgroundColor }) => {
   return (
     <div
       onClick={() => selectSong(song)}
-      className={`flex justify-between items-center p-2 rounded-md cursor-pointer
+      className={`flex justify-between items-center p-2 rounded-md cursor-pointer 
       ${isSelected ? `bg-opacity-80` : "hover:bg-gray-700"}`} // Increase opacity for selected song
       style={{
         backgroundColor: isSelected ? backgroundColor : undefined,

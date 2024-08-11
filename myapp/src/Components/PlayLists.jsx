@@ -26,7 +26,7 @@ const PlayLists = ({ selectedSong, selectSong, songs, backgroundColor }) => {
     selectedTab === "For You" ? filteredSongs : filteredSongs.slice(0, 4);
 
   return (
-    <div className="max-w-[432px] mx-auto z-50 min-w-[290px] flex-shrink-0 w-full h-full flex flex-col">
+    <div className="max-w-[432px] mx-auto z-50 min-w-[290px]  flex-shrink-0 w-full h-[650px] md:h-full flex flex-col ">
       {/* Tab Selection */}
       <div className="flex pl-2 gap-[40px] w-full leading-[32px] my-5 sm:my-[25px] md:my-[35px] font-[700]">
         <h2
@@ -53,18 +53,19 @@ const PlayLists = ({ selectedSong, selectSong, songs, backgroundColor }) => {
           searchTerm={searchTerm}
           setSearchTerm={setSearchTerm}
           backgroundColor={backgroundColor}
+          
         />
       </div>
       
       {/* Song List */}
       {loading ? (
-        <div className="flex justify-center items-center py-[150px]">
+        <div className="flex justify-center   items-center py-[150px]">
           <div className="loader">
             <Bars />
           </div>
         </div>
       ) : (
-        <div className="mt-4 space-y-2 overflow-y-scroll flex-grow">
+        <div className="mt-4 space-y-2  overflow-y-scroll flex-grow">
           {displayedSongs.map((song) => (
             <SongItem
               key={song.id}
