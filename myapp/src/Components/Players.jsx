@@ -161,7 +161,7 @@ const Player = ({ selectedSong, songs, setSelectedSong }) => {
           <div className="relative group">
             <GoKebabHorizontal size={48} className="bg-gray-800 p-2 rounded-full cursor-pointer" />
 
-            <div className="absolute bottom-5 -translate-y-2 right-0 text-center bg-gray-800 text-white p-2.5 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+            <div className="absolute bottom-5 -translate-y-2 right-0 text-center bg-gray-800 text-white p-2.5 rounded-t-full opacity-0 group-hover:opacity-100 transition-opacity duration-200">
               <div className="gap-2 pb-5 flex flex-col items-center">
                 {/* Timer Section */}
                 <div className="relative">
@@ -191,7 +191,7 @@ const Player = ({ selectedSong, songs, setSelectedSong }) => {
           </div>
 
           <div className="relative group flex justify-center items-center bg-gray-800 w-[48px] h-[48px] rounded-full cursor-pointer">
-            <HiSpeakerWave className="text-white text-[20px]" />
+            <HiSpeakerWave className="text-white text-[20px] group-hover:-rotate-90 duration-150" />
             <div className="absolute -top-[60px] hidden group-hover:flex items-center justify-center">
               <div className="bg-gray-800 p-2 rounded -rotate-90 -mt-5">
                 <input type="range" min="0" max="100" className="bg-gray-800 w-24 lg:w-32" onChange={(e) => (audioRef.current.volume = e.target.value / 100)} />

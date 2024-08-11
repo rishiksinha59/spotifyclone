@@ -148,7 +148,7 @@ const Home = () => {
           <img src={user ? user.photoURL : defaultUser} alt="User" className="w-10 hidden sm:block lg:w-12 flex-shrink-0 rounded-full bg-[black] hover:-[2px] hover:cursor-pointer -[#cc4545]" onClick={handleGoogle} />
           <div className="flex  sm:hidden gap-3 max-w-[140px] justify-between w-full items-center">
             <img src={user ? user.photoURL : defaultUser} alt="User" className="w-10 lg:w-12 flex-shrink-0 rounded-full bg-[black] hover:-[2px] hover:cursor-pointer -[#cc4545]" onClick={handleGoogle} />
-            <IoMenu size={40} className="bg-gray-800 p-[2px] sm:hidden" onClick={() => setPlay(!play)} />
+            <IoMenu size={40} className="bg-gray-800 p-[2px] sm:hidden border cursor-pointer" onClick={() => setPlay(!play)} />
           </div>
         </div>
       </div>
