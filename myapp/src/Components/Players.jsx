@@ -212,7 +212,7 @@ const Player = ({ selectedSong, songs, setSelectedSong }) => {
           <div className="relative group flex justify-center items-center bg-gray-800 w-[48px] h-[48px] rounded-full cursor-pointer">
             <HiSpeakerWave className="text-white text-[20px] group-hover:-rotate-90 duration-150" />
             <div className="absolute -top-[60px] hidden group-hover:flex items-center justify-center">
-              <div className="bg-gray-800 p-2 rounded -rotate-90   lg:-mt-5 ">
+              <div className="bg-gray-800 p-2 rounded -rotate-90  -mt-[4px] lg:-mt-5 ">
                 <input type="range" min="0" max="100" className="bg-gray-800 w-24 lg:w-32" onChange={(e) => (audioRef.current.volume = e.target.value / 100)} />
               </div>
             </div>

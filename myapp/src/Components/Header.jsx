@@ -5,7 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { IoMenu } from "react-icons/io5";
 
 const Header = ({ user, handleGoogle, play, setPlay, backgroundColor }) => {
-
+  console.log("User profile picture URL:", user ? user.photoURL : defaultUser);
 
   return (
     <div className="flex min-w-[132px]  md:flex-col  max-h-[1000px]  flex-shrink-0 justify-between  md:h-full py-3 md:py-[32px]  px-5 md:px-0">
