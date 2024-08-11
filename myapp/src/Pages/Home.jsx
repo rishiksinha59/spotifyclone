@@ -143,19 +143,13 @@ const Home = () => {
       style={{ backgroundColor }} // Apply the dynamic background color
     >
       <div className="md:hidden">
-        <div className="flex md:flex-col min-w-[60px] flex-shrink-0 justify-between md:h-full py-3 md:py-[32px] px-5 md:px-0">
-          <img src={Logo} alt="Spotify logo" className="w-24 lg:w-24 md:mb-4 flex-shrink-0" />
-          <img src={user ? user.photoURL : defaultUser} alt="User" className="w-10 hidden sm:block lg:w-12 flex-shrink-0 rounded-full bg-[black] hover:-[2px] hover:cursor-pointer -[#cc4545]" onClick={handleGoogle} />
-          <div className="flex  sm:hidden gap-3 max-w-[140px] justify-between w-full items-center">
-            <img src={user ? user.photoURL : defaultUser} alt="User" className="w-10 lg:w-12 flex-shrink-0 rounded-full bg-[black] hover:-[2px] hover:cursor-pointer -[#cc4545]" onClick={handleGoogle} />
-            <IoMenu size={40} className="bg-gray-800 p-[2px] sm:hidden border cursor-pointer" onClick={() => setPlay(!play)} />
-          </div>
-        </div>
+           <Header user={user} handleGoogle={handleGoogle} play={play} setPlay={setPlay} />
+
       </div>
       <div className="sm:flex max-h-[1000px] h-[100%] overflow-clip max-w-[1450px] md:px-[32px] px-5 mx-auto gap-5 justify-around">
       <div className="hidden md:block">
 
-      <Header/>
+      <Header user={user} handleGoogle={handleGoogle} play={play} setPlay={setPlay} />
       </div>
         <div className="hidden sm:block h-[100%] w-full overflow-y-scroll">
           <PlayLists selectSong={setSelectedSong} selectedSong={selectedSong} setSongs={setSongs} songs={songs} />
