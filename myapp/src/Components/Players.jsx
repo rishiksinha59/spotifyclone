@@ -146,11 +146,11 @@ const Player = ({ selectedSong, songs, setSelectedSong }) => {
     selectedSong && (
       <div className="flex flex-col sm:max-w-[480px] w-full ">
         <div className="">
-          <h3 className="text-white text-base text-[26px] sm:text-[30px] lg:text-[32px] font-[700] leading-[36px]">{selectedSong.name}</h3>
-          <p className="text-gray-400 mb-4 text-sm lg:text-base leading-[24px]">{selectedSong.artist}</p>
+          <h3 className="text-white  text-[24px] sm:text-[30px] lg:text-[32px] font-[700] leading-[36px]">{selectedSong.name}</h3>
+          <p className="text-gray-400 mb-4 text-sm lg:text-[16px] leading-[24px]">{selectedSong.artist}</p>
         </div>
-        <div className="max-w-[480px] mx-auto  aspect-square w-[100%]">
-          <img src={`https://cms.samespace.com/assets/${selectedSong.cover}`} alt={selectedSong.name} className="mb-4 max-w-[480px] w-[100%] aspect-square" />
+        <div className="max-w-[480px] mx-auto  aspect-square w-[100%] ">
+          <img src={`https://cms.samespace.com/assets/${selectedSong.cover}`} alt={selectedSong.name} className="mb-4 max-w-[480px] w-[100%] aspect-square  rounded-[8px]" />
         </div>
 
         <div className="w-full h-[6px] bg-gray-600 rounded-full cursor-pointer mb-[32px] max-w-[480px] mx-auto mt-[24px]" onClick={handleProgressClick}>

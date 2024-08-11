@@ -59,7 +59,7 @@ const Home = () => {
 
       <Header user={user} handleGoogle={handleGoogle} play={play} setPlay={setPlay} />
       </div>
-        <div className="hidden  sm:block h-[100%] w-full overflow-y-scroll">
+        <div className="hidden  px-1 sm:block h-[100%] w-full overflow-y-scroll">
           <PlayLists selectSong={setSelectedSong} selectedSong={selectedSong} setSongs={setSongs} songs={songs} backgroundColor={backgroundColor}/>
         </div>
         {play && (

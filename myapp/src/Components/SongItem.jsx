@@ -30,8 +30,8 @@ const SongItem = ({ song, selectSong, isSelected, backgroundColor }) => {
           className="w-10 h-10 rounded-md mr-4"
         />
         <div>
-          <h4 className="text-white font-medium">{song.name}</h4>
-          <p className="text-gray-400 text-sm">{song.artist}</p>
+          <h4 className="text-white font-medium text-[18px]">{song.name}</h4>
+          <p className="text-gray-400 text-[14px]">{song.artist}</p>
         </div>
       </div>
       <div className="flex items-center gap-3">

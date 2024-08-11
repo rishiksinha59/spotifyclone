@@ -9,6 +9,7 @@ module.exports = {
         'background': 'background-color',
       },
     },
+
   },
   plugins: [],
 }
