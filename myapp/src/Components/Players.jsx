@@ -133,7 +133,7 @@ const Player = ({ selectedSong, songs, setSelectedSong }) => {
   const setTimer = (duration) => {
     if (duration === 0) {
       setTimerActivated(false);
-      setTimerDuration(0); // Reset the duration to 0 when the timer is turned off
+      setTimerDuration(0); 
       setShowTimerOptions(false);
       return;
     }

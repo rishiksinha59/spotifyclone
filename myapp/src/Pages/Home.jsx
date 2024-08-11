@@ -63,21 +63,25 @@ const Home = () => {
           <PlayLists selectSong={setSelectedSong} selectedSong={selectedSong} setSongs={setSongs} songs={songs} backgroundColor={backgroundColor}/>
         </div>
         {play && (
-          <div className="absolute mx-5 rounded-b-lg rounded-tl-lg  z-40 right-0 left-0 bg-slate-800 h-[85%] overflow-y-scroll  sm:hidden " style={{backgroundColor: backgroundColor}}>
+          <div 
+          className={`absolute mx-5  px-3 rounded-b-lg rounded-tl-lg z-40 right-0 left-0 bg-slate-800 h-[91.2%] overflow-y-scroll sm:hidden transition-all duration-500 ease-in-out ${
+            play ? "transform scale-100" : "transform scale-0 origin-top-right"
+          }`}
+           style={{backgroundColor: backgroundColor}}>
             <PlayLists selectSong={setSelectedSong} selectedSong={selectedSong} setSongs={setSongs} songs={songs} backgroundColor={backgroundColor}/>
           </div>
         )}
         {selectedSong ? (
-          <div className="flex flex-col justify-center  w-full">
+          <div className="flex flex-col justify-center  w-full ">
             <Player selectedSong={selectedSong} songs={songs} setSelectedSong={setSelectedSong} />
           </div>
         ) : (
-          <div className="flex flex-col    h-[70svh] sm:h-auto justify-center text-[30px] sm:text-[35px] lg:text-[45px] font-semibold items-center text-center tracking-wider opacity-50">
-            <span className="ml-4">
+          <div className="flex flex-col  md:max-w-[500px] w-full h-[70svh] sm:h-auto justify-center text-[30px] sm:text-[35px] lg:text-[45px] font-semibold items-center text-center tracking-wider opacity-50">
+            <span className="ml-4 border">
               Please Select
               <br />a Song
-            </span>
             <FaMusic className="mx-auto text-[40px] sm:text-[50px] md:text-[60px] m-5" />
+            </span>
           </div>
         )}
       </div>
