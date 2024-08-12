@@ -46,7 +46,7 @@ const Home = () => {
 
   return (
     <div
-      className="h-screen overflow-clip text-white transition-background bg-gradient-to-l from-gray-900"
+      className="h-screen overflow-scroll text-white transition-background bg-gradient-to-l from-gray-900"
       style={{ backgroundColor }}
     >
       <div className="md:hidden">
